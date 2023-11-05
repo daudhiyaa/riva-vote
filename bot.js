@@ -23,14 +23,21 @@ const konfigbrowser = {
   disablegpu: true,
 };
 
-const banyakVote = 10;
+const banyakVote = 5;
+const delay = 150; // miliseconds
+const timeout = 5000;
 
 (async () => {
   const browser = await puppeteer.launch(konfigbrowser);
+
   for (let i = 0; i < banyakVote; i++) {
     const page = await browser.newPage();
-    const timeout = 5000;
     page.setDefaultTimeout(timeout);
+
+    let option1 = Math.floor(Math.random() * 7),
+      option2 = Math.floor(Math.random() * 4),
+      option3 = Math.floor(Math.random() * 7),
+      option4 = Math.floor(Math.random() * 6);
 
     {
       const targetPage = page;
@@ -55,15 +62,16 @@ const banyakVote = 10;
       const targetPage = page;
       await puppeteer.Locator.race([
         targetPage.locator(
-          "div.o3Dpx > div:nth-of-type(1) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `div.o3Dpx > div:nth-of-type(1) span > div > div:nth-of-type(${option1}) div.vd3tt > div`
         ),
         targetPage.locator('::-p-xpath(//*[@id=\\"i5\\"]/div[3]/div)'),
         targetPage.locator(
-          ":scope >>> div.o3Dpx > div:nth-of-type(1) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `:scope >>> div.o3Dpx > div:nth-of-type(1) span > div > div:nth-of-type(${option1}) div.vd3tt > div`
         ),
       ])
         .setTimeout(timeout)
         .click({
+          delay: delay,
           offset: {
             x: 10,
             y: 7.015625,
@@ -74,15 +82,16 @@ const banyakVote = 10;
       const targetPage = page;
       await puppeteer.Locator.race([
         targetPage.locator(
-          "div.o3Dpx > div:nth-of-type(2) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `div.o3Dpx > div:nth-of-type(2) span > div > div:nth-of-type(${option2}) div.vd3tt > div`
         ),
         targetPage.locator('::-p-xpath(//*[@id=\\"i27\\"]/div[3]/div)'),
         targetPage.locator(
-          ":scope >>> div.o3Dpx > div:nth-of-type(2) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `:scope >>> div.o3Dpx > div:nth-of-type(2) span > div > div:nth-of-type(${option2}) div.vd3tt > div`
         ),
       ])
         .setTimeout(timeout)
         .click({
+          delay: delay,
           offset: {
             x: 8,
             y: 5.015625,
@@ -93,15 +102,16 @@ const banyakVote = 10;
       const targetPage = page;
       await puppeteer.Locator.race([
         targetPage.locator(
-          "div:nth-of-type(3) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `div:nth-of-type(3) span > div > div:nth-of-type(${option3}) div.vd3tt > div`
         ),
         targetPage.locator('::-p-xpath(//*[@id=\\"i40\\"]/div[3]/div)'),
         targetPage.locator(
-          ":scope >>> div:nth-of-type(3) span > div > div:nth-of-type(1) div.vd3tt > div"
+          `:scope >>> div:nth-of-type(3) span > div > div:nth-of-type(${option3}) div.vd3tt > div`
         ),
       ])
         .setTimeout(timeout)
         .click({
+          delay: delay,
           offset: {
             x: 5,
             y: 1.015625,
@@ -112,15 +122,16 @@ const banyakVote = 10;
       const targetPage = page;
       await puppeteer.Locator.race([
         targetPage.locator(
-          "div:nth-of-type(4) span > div > div:nth-of-type(4) div.vd3tt > div"
+          `div:nth-of-type(4) span > div > div:nth-of-type(${option4}) div.vd3tt > div`
         ),
         targetPage.locator('::-p-xpath(//*[@id=\\"i71\\"]/div[3]/div)'),
         targetPage.locator(
-          ":scope >>> div:nth-of-type(4) span > div > div:nth-of-type(4) div.vd3tt > div"
+          `:scope >>> div:nth-of-type(4) span > div > div:nth-of-type(${option4}) div.vd3tt > div`
         ),
       ])
         .setTimeout(timeout)
         .click({
+          delay: delay,
           offset: {
             x: 13,
             y: 14.015625,
@@ -140,6 +151,7 @@ const banyakVote = 10;
       ])
         .setTimeout(timeout)
         .click({
+          delay: delay,
           offset: {
             x: 10,
             y: 4.015625,
@@ -163,6 +175,7 @@ const banyakVote = 10;
         .setTimeout(timeout)
         .on("action", () => startWaitingForEvents())
         .click({
+          delay: delay,
           offset: {
             x: 31,
             y: 18.015625,
