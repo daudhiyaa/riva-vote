@@ -34,10 +34,10 @@ const timeout = 5000;
     const page = await browser.newPage();
     page.setDefaultTimeout(timeout);
 
-    let option1 = Math.floor(Math.random() * 7),
-      option2 = Math.floor(Math.random() * 4),
-      option3 = Math.floor(Math.random() * 7),
-      option4 = Math.floor(Math.random() * 6);
+    let option1 = Math.floor(Math.random() * 6) + 1,
+      option2 = Math.floor(Math.random() * 3) + 1,
+      option3 = Math.floor(Math.random() * 6) + 1,
+      option4 = Math.floor(Math.random() * 5) + 1;
 
     {
       const targetPage = page;
