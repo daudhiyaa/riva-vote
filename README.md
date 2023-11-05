@@ -30,7 +30,9 @@ This project includes a bot implemented in JavaScript, specifically in a file na
    npm i puppeteer
    ```
 
-4. Run the bot
+4. Customize the `banyakVote` value in line 26
+
+5. Run the bot
    ```
    node bot.js
    ```
