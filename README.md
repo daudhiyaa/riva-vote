@@ -32,7 +32,9 @@ This project includes a bot implemented in JavaScript, specifically in a file na
 
 4. Customize the `banyakVote` value in line 26
 
-5. Run the bot
+5. Customize the `delay` time in line 27
+
+6. Run the bot
    ```
    node bot.js
    ```
